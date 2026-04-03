@@ -14,6 +14,7 @@ Get the Smart SMS Authentication module running in 5 minutes!
 cd smartsms
 ```
 
+
 ### 2. Create & activate virtual environment
 ```bash
 # Windows
@@ -110,7 +111,7 @@ curl -X POST http://localhost:8000/api/register/ \
 
 ### 2. Verify OTP
 ```bash
-curl -X POST http://localhost:8000/api/verify-otp/ \
+curl -X POST http://localhost:8000/api/verify_otp/ \
   -H "Content-Type: application/json" \
   -d '{
     "user_id": "YOUR_USER_ID_HERE",
