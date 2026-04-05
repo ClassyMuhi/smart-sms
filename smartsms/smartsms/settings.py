@@ -32,8 +32,9 @@ INSTALLED_APPS = [
     'corsheaders',
     
     # Local apps
-    'auth_module',
-    'contact_management',
+    'apps.module_1_auth',
+    'apps.module_2_messaging',
+    'apps.module_3_contacts',
 ]
 
 MIDDLEWARE = [

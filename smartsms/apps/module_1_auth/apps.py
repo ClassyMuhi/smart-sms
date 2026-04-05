@@ -1,10 +1,10 @@
 from django.apps import AppConfig
 
 
-class AuthModuleConfig(AppConfig):
+class Module1AuthConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'auth_module'
-    verbose_name = 'Authentication Module'
+    name = 'apps.module_1_auth'
+    verbose_name = 'Module 1: Authentication & User Management'
     
     def ready(self):
         """Import signals when app is ready."""
