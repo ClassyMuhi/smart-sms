@@ -2,7 +2,7 @@ import re
 import uuid
 from django.db import models
 from django.core.exceptions import ValidationError
-from auth_module.models import CustomUser
+from apps.module_1_auth.models import CustomUser
 
 
 def normalize_phone(phone):

@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 ('ip_address', models.GenericIPAddressField(blank=True, null=True)),
                 ('user_agent', models.CharField(blank=True, max_length=500)),
                 ('login_at', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='login_history', to='auth_module.customuser')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='login_history', to='module_1_auth.customuser')),
             ],
             options={
                 'verbose_name_plural': 'User Login Histories',
@@ -73,7 +73,7 @@ class Migration(migrations.Migration):
                 ('expires_at', models.DateTimeField()),
                 ('attempts', models.IntegerField(default=0)),
                 ('max_attempts', models.IntegerField(default=5)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='otp_verification', to='auth_module.customuser')),
+                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='otp_verification', to='module_1_auth.customuser')),
             ],
             options={
                 'ordering': ['-created_at'],
