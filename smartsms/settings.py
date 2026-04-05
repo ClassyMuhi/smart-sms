@@ -19,6 +19,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,6 +35,7 @@ INSTALLED_APPS = [
     
     # Local apps
     'auth_module',
+    'messaging',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +68,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'smartsms.wsgi.application'
+ASGI_APPLICATION = 'smartsms.asgi.application'
+
+AUTH_USER_MODEL = 'auth_module.CustomUser'
+
+# Channel layer configuration
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
 
 # Database - SQLite Configuration (Development)
 DATABASES = {

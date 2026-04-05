@@ -1,0 +1,3321 @@
+﻿.\venv\Scripts\python.exe 
+: Watching for file 
+changes with StatReloader
+At line:1 char:1
++ 
+.\venv\Scripts\python.exe 
+manage.py runserver > 
+server_log.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (W  
+  atching for fi...th S   
+ tatReloader:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+Watching for file changes 
+with StatReloader
+HTTP/2 support not 
+enabled (install the 
+http2 and tls Twisted 
+extras)
+Configuring endpoint tcp:p
+ort=8000:interface=127.0.0
+.1
+Listening on TCP address 
+127.0.0.1:8000
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:54631]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:54631]
+Exception inside 
+application: Field 'id' 
+expected a number but got 
+'74ddd44f-20da-4003-a16a-3
+e3a7a4884bf'.
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\fields\__init__.py"
+, line 2053, in 
+get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid 
+literal for int() with 
+base 10: '74ddd44f-20da-40
+03-a16a-3e3a7a4884bf'
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\con
+trib\staticfiles\handlers.
+py", line 101, in __call__
+    return await 
+self.application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\r
+outing.py", line 48, in 
+__call__
+    return await 
+application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\s
+ecurity\websocket.py", 
+line 37, in __call__
+    return await 
+self.application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\middleware.py", line 
+35, in __call__
+    scope["user"] = await 
+get_user(decoded_data)
+                    ^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 506, in 
+__call__
+    ret = await 
+asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\concurrent\
+futures\thread.py", line 
+58, in run
+    result = 
+self.fn(*self.args, 
+**self.kwargs)
+             ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\d
+b.py", line 13, in 
+thread_handler
+    return super().thread_
+handler(loop, *args, 
+**kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 561, in 
+thread_handler
+    return func(*args, 
+**kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\middleware.py", line 
+15, in get_user
+    return User.objects.ge
+t(id=user_id)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+623, in get
+    clone = self._chain() 
+if self.query.combinator 
+else self.filter(*args, 
+**kwargs)
+                          
+                          
+    ^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1436, in filter
+    return self._filter_or
+_exclude(False, args, 
+kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1454, in 
+_filter_or_exclude
+    clone._filter_or_exclu
+de_inplace(negate, args, 
+kwargs)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1461, in 
+_filter_or_exclude_inplace
+    self._query.add_q(Q(*a
+rgs, **kwargs))
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1546, in add_q
+    clause, _ = 
+self._add_q(q_object, 
+self.used_aliases)
+                ^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1577, in _add_q
+    child_clause, 
+needed_inner = 
+self.build_filter(
+                          
+       ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1492, in build_filter
+    condition = self.build
+_lookup(lookups, col, 
+value)
+                ^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1319, in build_lookup
+    lookup = 
+lookup_class(lhs, rhs)
+             
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+27, in __init__
+    self.rhs = 
+self.get_prep_lookup()
+               
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+341, in get_prep_lookup
+    return 
+super().get_prep_lookup()
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+85, in get_prep_lookup
+    return self.lhs.output
+_field.get_prep_value(self
+.rhs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\fields\__init__.py"
+, line 2055, in 
+get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' 
+expected a number but got 
+'74ddd44f-20da-4003-a16a-3
+e3a7a4884bf'.
+WebSocket DISCONNECT /ws/c
+hat/74ddd44f-20da-4003-a16
+a-3e3a7a4884bf/ 
+[127.0.0.1:54631]
+WebSocket DISCONNECT /ws/c
+hat/74ddd44f-20da-4003-a16
+a-3e3a7a4884bf/ 
+[127.0.0.1:54631]
+Internal Server Error: 
+/api/messages/send/
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\fields\__init__.py"
+, line 2053, in 
+get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid 
+literal for int() with 
+base 10: '278e3d32-5821-49
+c7-9dd4-72b6d38ce5df'
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\exception.py", 
+line 42, in inner
+    response = await 
+get_response(request)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\base.py", line 
+253, in 
+_get_response_async
+    response = await 
+wrapped_callback(
+               
+^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 506, in 
+__call__
+    ret = await 
+asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\concurrent\
+futures\thread.py", line 
+58, in run
+    result = 
+self.fn(*self.args, 
+**self.kwargs)
+             ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 561, in 
+thread_handler
+    return func(*args, 
+**kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\vie
+ws\decorators\csrf.py", 
+line 56, in wrapper_view
+    return 
+view_func(*args, **kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\viewsets.py", line 
+125, in view
+    return 
+self.dispatch(request, 
+*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 509, 
+in dispatch
+    response = 
+self.handle_exception(exc)
+               
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 469, 
+in handle_exception
+    self.raise_uncaught_ex
+ception(exc)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 480, 
+in 
+raise_uncaught_exception
+    raise exc
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 497, 
+in dispatch
+    self.initial(request, 
+*args, **kwargs)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 414, 
+in initial
+    self.perform_authentic
+ation(request)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 324, 
+in perform_authentication
+    request.user
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\request.py", line 
+227, in user
+    self._authenticate()
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\request.py", line 
+380, in _authenticate
+    user_auth_tuple = auth
+enticator.authenticate(sel
+f)
+                      ^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\authenticat
+ion.py", line 51, in 
+authenticate
+    return self.get_user(v
+alidated_token), 
+validated_token
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\authenticat
+ion.py", line 130, in 
+get_user
+    user = self.user_model
+.objects.get(**{api_settin
+gs.USER_ID_FIELD: 
+user_id})
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+623, in get
+    clone = self._chain() 
+if self.query.combinator 
+else self.filter(*args, 
+**kwargs)
+                          
+                          
+    ^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1436, in filter
+    return self._filter_or
+_exclude(False, args, 
+kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1454, in 
+_filter_or_exclude
+    clone._filter_or_exclu
+de_inplace(negate, args, 
+kwargs)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1461, in 
+_filter_or_exclude_inplace
+    self._query.add_q(Q(*a
+rgs, **kwargs))
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1546, in add_q
+    clause, _ = 
+self._add_q(q_object, 
+self.used_aliases)
+                ^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1577, in _add_q
+    child_clause, 
+needed_inner = 
+self.build_filter(
+                          
+       ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1492, in build_filter
+    condition = self.build
+_lookup(lookups, col, 
+value)
+                ^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1319, in build_lookup
+    lookup = 
+lookup_class(lhs, rhs)
+             
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+27, in __init__
+    self.rhs = 
+self.get_prep_lookup()
+               
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+341, in get_prep_lookup
+    return 
+super().get_prep_lookup()
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+85, in get_prep_lookup
+    return self.lhs.output
+_field.get_prep_value(self
+.rhs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\fields\__init__.py"
+, line 2055, in 
+get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' 
+expected a number but got 
+'278e3d32-5821-49c7-9dd4-7
+2b6d38ce5df'.
+Internal Server Error: 
+/api/messages/send/
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\fields\__init__.py"
+, line 2053, in 
+get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid 
+literal for int() with 
+base 10: '278e3d32-5821-49
+c7-9dd4-72b6d38ce5df'
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\exception.py", 
+line 42, in inner
+    response = await 
+get_response(request)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\base.py", line 
+253, in 
+_get_response_async
+    response = await 
+wrapped_callback(
+               
+^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 506, in 
+__call__
+    ret = await 
+asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\concurrent\
+futures\thread.py", line 
+58, in run
+    result = 
+self.fn(*self.args, 
+**self.kwargs)
+             ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 561, in 
+thread_handler
+    return func(*args, 
+**kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\vie
+ws\decorators\csrf.py", 
+line 56, in wrapper_view
+    return 
+view_func(*args, **kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\viewsets.py", line 
+125, in view
+    return 
+self.dispatch(request, 
+*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 509, 
+in dispatch
+    response = 
+self.handle_exception(exc)
+               
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 469, 
+in handle_exception
+    self.raise_uncaught_ex
+ception(exc)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 480, 
+in 
+raise_uncaught_exception
+    raise exc
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 497, 
+in dispatch
+    self.initial(request, 
+*args, **kwargs)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 414, 
+in initial
+    self.perform_authentic
+ation(request)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 324, 
+in perform_authentication
+    request.user
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\request.py", line 
+227, in user
+    self._authenticate()
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\request.py", line 
+380, in _authenticate
+    user_auth_tuple = auth
+enticator.authenticate(sel
+f)
+                      ^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\authenticat
+ion.py", line 51, in 
+authenticate
+    return self.get_user(v
+alidated_token), 
+validated_token
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\authenticat
+ion.py", line 130, in 
+get_user
+    user = self.user_model
+.objects.get(**{api_settin
+gs.USER_ID_FIELD: 
+user_id})
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+623, in get
+    clone = self._chain() 
+if self.query.combinator 
+else self.filter(*args, 
+**kwargs)
+                          
+                          
+    ^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1436, in filter
+    return self._filter_or
+_exclude(False, args, 
+kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1454, in 
+_filter_or_exclude
+    clone._filter_or_exclu
+de_inplace(negate, args, 
+kwargs)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1461, in 
+_filter_or_exclude_inplace
+    self._query.add_q(Q(*a
+rgs, **kwargs))
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1546, in add_q
+    clause, _ = 
+self._add_q(q_object, 
+self.used_aliases)
+                ^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1577, in _add_q
+    child_clause, 
+needed_inner = 
+self.build_filter(
+                          
+       ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1492, in build_filter
+    condition = self.build
+_lookup(lookups, col, 
+value)
+                ^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\query.py", 
+line 1319, in build_lookup
+    lookup = 
+lookup_class(lhs, rhs)
+             
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+27, in __init__
+    self.rhs = 
+self.get_prep_lookup()
+               
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+341, in get_prep_lookup
+    return 
+super().get_prep_lookup()
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\lookups.py", line 
+85, in get_prep_lookup
+    return self.lhs.output
+_field.get_prep_value(self
+.rhs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\fields\__init__.py"
+, line 2055, in 
+get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' 
+expected a number but got 
+'278e3d32-5821-49c7-9dd4-7
+2b6d38ce5df'.
+HTTP POST 
+/api/messages/send/ 500 
+[0.05, 127.0.0.1:54633]
+HTTP POST 
+/api/messages/send/ 500 
+[0.05, 127.0.0.1:54633]
+C:\Users\sivar\Desktop\Pro
+jects-folder\Smart_chating
+\smart-sms\smartsms\settin
+gs.py changed, reloading.
+C:\Users\sivar\Desktop\Pro
+jects-folder\Smart_chating
+\smart-sms\smartsms\settin
+gs.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 03, 2026 - 18:18:53
+Django version 4.2.11, using settings 'smartsms.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Watching for file changes 
+with StatReloader
+Watching for file changes 
+with StatReloader
+HTTP/2 support not 
+enabled (install the 
+http2 and tls Twisted 
+extras)
+Configuring endpoint tcp:p
+ort=8000:interface=127.0.0
+.1
+Listening on TCP address 
+127.0.0.1:8000
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:56560]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:56560]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:56560]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:56560]
+Method Not Allowed: 
+/api/messages/send/
+Method Not Allowed: 
+/api/messages/send/
+HTTP POST 
+/api/messages/send/ 405 
+[0.01, 127.0.0.1:65178]
+HTTP POST 
+/api/messages/send/ 405 
+[0.01, 127.0.0.1:65178]
+WebSocket DISCONNECT /ws/c
+hat/74ddd44f-20da-4003-a16
+a-3e3a7a4884bf/ 
+[127.0.0.1:56560]
+WebSocket DISCONNECT /ws/c
+hat/74ddd44f-20da-4003-a16
+a-3e3a7a4884bf/ 
+[127.0.0.1:56560]
+C:\Users\sivar\Desktop\Pro
+jects-folder\Smart_chating
+\smart-sms\messaging\views
+.py changed, reloading.
+C:\Users\sivar\Desktop\Pro
+jects-folder\Smart_chating
+\smart-sms\messaging\views
+.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 03, 2026 - 18:22:06
+Django version 4.2.11, using settings 'smartsms.settings'
+Starting ASGI/Daphne version 4.2.1 development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Watching for file changes 
+with StatReloader
+Watching for file changes 
+with StatReloader
+HTTP/2 support not 
+enabled (install the 
+http2 and tls Twisted 
+extras)
+Configuring endpoint tcp:p
+ort=8000:interface=127.0.0
+.1
+Listening on TCP address 
+127.0.0.1:8000
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:57530]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:57530]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:57530]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:57530]
+Internal Server Error: 
+/api/messages/send/
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+89, in _execute
+    return 
+self.cursor.execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\sqlite3\base.py",
+ line 328, in execute
+    return 
+super().execute(query, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: 
+NOT NULL constraint 
+failed: messaging_message.
+receiver_id
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\exception.py", 
+line 42, in inner
+    response = await 
+get_response(request)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\base.py", line 
+253, in 
+_get_response_async
+    response = await 
+wrapped_callback(
+               
+^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 506, in 
+__call__
+    ret = await 
+asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\concurrent\
+futures\thread.py", line 
+58, in run
+    result = 
+self.fn(*self.args, 
+**self.kwargs)
+             ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 561, in 
+thread_handler
+    return func(*args, 
+**kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\vie
+ws\decorators\csrf.py", 
+line 56, in wrapper_view
+    return 
+view_func(*args, **kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\viewsets.py", line 
+125, in view
+    return 
+self.dispatch(request, 
+*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 509, 
+in dispatch
+    response = 
+self.handle_exception(exc)
+               
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 469, 
+in handle_exception
+    self.raise_uncaught_ex
+ception(exc)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 480, 
+in 
+raise_uncaught_exception
+    raise exc
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 506, 
+in dispatch
+    response = 
+handler(request, *args, 
+**kwargs)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\views.py", line 26, in 
+send_message
+    message = serializer.s
+ave(sender=request.user, 
+status='sent')
+              ^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\serializers.py", 
+line 212, in save
+    self.instance = self.c
+reate(validated_data)
+                    ^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\serializers.py", 
+line 962, in create
+    instance = ModelClass.
+_default_manager.create(**
+validated_data)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+658, in create
+    obj.save(force_insert=
+True, using=self.db)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+814, in save
+    self.save_base(
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+877, in save_base
+    updated = 
+self._save_table(
+              
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+1020, in _save_table
+    results = 
+self._do_insert(
+              
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+1061, in _do_insert
+    return 
+manager._insert(
+           
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1805, in _insert
+    return query.get_compi
+ler(using=using).execute_s
+ql(returning_fields)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\compiler.py", 
+line 1822, in execute_sql
+    cursor.execute(sql, 
+params)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+102, in execute
+    return 
+super().execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+67, in execute
+    return self._execute_w
+ith_wrappers(
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+80, in 
+_execute_with_wrappers
+    return executor(sql, 
+params, many, context)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+84, in _execute
+    with self.db.wrap_data
+base_errors:
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+utils.py", line 91, in 
+__exit__
+    raise dj_exc_value.wit
+h_traceback(traceback) 
+from exc_value
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+89, in _execute
+    return 
+self.cursor.execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\sqlite3\base.py",
+ line 328, in execute
+    return 
+super().execute(query, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+django.db.utils.IntegrityE
+rror: NOT NULL constraint 
+failed: messaging_message.
+receiver_id
+Internal Server Error: 
+/api/messages/send/
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+89, in _execute
+    return 
+self.cursor.execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\sqlite3\base.py",
+ line 328, in execute
+    return 
+super().execute(query, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: 
+NOT NULL constraint 
+failed: messaging_message.
+receiver_id
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\exception.py", 
+line 42, in inner
+    response = await 
+get_response(request)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\base.py", line 
+253, in 
+_get_response_async
+    response = await 
+wrapped_callback(
+               
+^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 506, in 
+__call__
+    ret = await 
+asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\concurrent\
+futures\thread.py", line 
+58, in run
+    result = 
+self.fn(*self.args, 
+**self.kwargs)
+             ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 561, in 
+thread_handler
+    return func(*args, 
+**kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\vie
+ws\decorators\csrf.py", 
+line 56, in wrapper_view
+    return 
+view_func(*args, **kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\viewsets.py", line 
+125, in view
+    return 
+self.dispatch(request, 
+*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 509, 
+in dispatch
+    response = 
+self.handle_exception(exc)
+               
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 469, 
+in handle_exception
+    self.raise_uncaught_ex
+ception(exc)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 480, 
+in 
+raise_uncaught_exception
+    raise exc
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 506, 
+in dispatch
+    response = 
+handler(request, *args, 
+**kwargs)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\views.py", line 26, in 
+send_message
+    message = serializer.s
+ave(sender=request.user, 
+status='sent')
+              ^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\serializers.py", 
+line 212, in save
+    self.instance = self.c
+reate(validated_data)
+                    ^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\serializers.py", 
+line 962, in create
+    instance = ModelClass.
+_default_manager.create(**
+validated_data)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+658, in create
+    obj.save(force_insert=
+True, using=self.db)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+814, in save
+    self.save_base(
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+877, in save_base
+    updated = 
+self._save_table(
+              
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+1020, in _save_table
+    results = 
+self._do_insert(
+              
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+1061, in _do_insert
+    return 
+manager._insert(
+           
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1805, in _insert
+    return query.get_compi
+ler(using=using).execute_s
+ql(returning_fields)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\compiler.py", 
+line 1822, in execute_sql
+    cursor.execute(sql, 
+params)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+102, in execute
+    return 
+super().execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+67, in execute
+    return self._execute_w
+ith_wrappers(
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+80, in 
+_execute_with_wrappers
+    return executor(sql, 
+params, many, context)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+84, in _execute
+    with self.db.wrap_data
+base_errors:
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+utils.py", line 91, in 
+__exit__
+    raise dj_exc_value.wit
+h_traceback(traceback) 
+from exc_value
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+89, in _execute
+    return 
+self.cursor.execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\sqlite3\base.py",
+ line 328, in execute
+    return 
+super().execute(query, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+django.db.utils.IntegrityE
+rror: NOT NULL constraint 
+failed: messaging_message.
+receiver_id
+HTTP POST 
+/api/messages/send/ 500 
+[0.07, 127.0.0.1:57532]
+HTTP POST 
+/api/messages/send/ 500 
+[0.07, 127.0.0.1:57532]
+WebSocket DISCONNECT /ws/c
+hat/74ddd44f-20da-4003-a16
+a-3e3a7a4884bf/ 
+[127.0.0.1:57530]
+WebSocket DISCONNECT /ws/c
+hat/74ddd44f-20da-4003-a16
+a-3e3a7a4884bf/ 
+[127.0.0.1:57530]
+Unauthorized: 
+/api/messages/send/
+Unauthorized: 
+/api/messages/send/
+HTTP POST 
+/api/messages/send/ 401 
+[0.01, 127.0.0.1:52619]
+HTTP POST 
+/api/messages/send/ 401 
+[0.01, 127.0.0.1:52619]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:50850]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:50850]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:50850]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:50850]
+WebSocket DISCONNECT /ws/c
+hat/74ddd44f-20da-4003-a16
+a-3e3a7a4884bf/ 
+[127.0.0.1:50850]
+WebSocket DISCONNECT /ws/c
+hat/74ddd44f-20da-4003-a16
+a-3e3a7a4884bf/ 
+[127.0.0.1:50850]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:59333]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:59333]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:59333]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:59333]
+WebSocket HANDSHAKING /ws/
+chat/278e3d32-5821-49c7-9d
+d4-72b6d38ce5df/ 
+[127.0.0.1:54115]
+WebSocket HANDSHAKING /ws/
+chat/278e3d32-5821-49c7-9d
+d4-72b6d38ce5df/ 
+[127.0.0.1:54115]
+Exception inside 
+application: cannot 
+access local variable 
+'jwt' where it is not 
+associated with a value
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 313, in _load
+    header: dict[str, 
+Any] = 
+json.loads(header_data)
+                          
+   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\json\__init
+__.py", line 341, in loads
+    s = s.decode(detect_en
+coding(s), 
+'surrogatepass')
+        ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^
+UnicodeDecodeError: 
+'utf-8' codec can't 
+decode byte 0xa7 in 
+position 5: invalid start 
+byte
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\backends.py
+", line 139, in decode
+    return jwt.decode(
+           ^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+t.py", line 365, in decode
+    decoded = 
+self.decode_complete(
+              
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+t.py", line 262, in 
+decode_complete
+    decoded = 
+self._jws.decode_complete(
+              
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 240, in 
+decode_complete
+    payload, 
+signing_input, header, 
+signature = 
+self._load(jwt)
+                          
+                      
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 315, in _load
+    raise 
+DecodeError(f"Invalid 
+header string: {e}") from 
+e
+jwt.exceptions.DecodeError
+: Invalid header string: 
+'utf-8' codec can't 
+decode byte 0xa7 in 
+position 5: invalid start 
+byte
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\tokens.py",
+ line 58, in __init__
+    self.payload = token_b
+ackend.decode(token, 
+verify=verify)
+                   ^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\backends.py
+", line 154, in decode
+    raise TokenBackendErro
+r(_("Token is invalid or 
+expired")) from ex
+rest_framework_simplejwt.e
+xceptions.TokenBackendErro
+r: Token is invalid or 
+expired
+
+During handling of the 
+above exception, another 
+exception occurred:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\middleware.py", line 
+30, in __call__
+    UntypedToken(token)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\tokens.py",
+ line 60, in __init__
+    raise 
+TokenError(_("Token is 
+invalid or expired"))
+rest_framework_simplejwt.e
+xceptions.TokenError: 
+Token is invalid or 
+expired
+
+During handling of the 
+above exception, another 
+exception occurred:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\con
+trib\staticfiles\handlers.
+py", line 101, in __call__
+    return await 
+self.application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\r
+outing.py", line 48, in 
+__call__
+    return await 
+application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\s
+ecurity\websocket.py", 
+line 37, in __call__
+    return await 
+self.application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\middleware.py", line 
+36, in __call__
+    except (InvalidToken, 
+TokenError, 
+jwt.DecodeError) as e:
+                          
+            ^^^
+UnboundLocalError: cannot 
+access local variable 
+'jwt' where it is not 
+associated with a value
+WebSocket DISCONNECT /ws/c
+hat/278e3d32-5821-49c7-9dd
+4-72b6d38ce5df/ 
+[127.0.0.1:54115]
+WebSocket DISCONNECT /ws/c
+hat/278e3d32-5821-49c7-9dd
+4-72b6d38ce5df/ 
+[127.0.0.1:54115]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:63169]
+WebSocket HANDSHAKING /ws/
+chat/74ddd44f-20da-4003-a1
+6a-3e3a7a4884bf/ 
+[127.0.0.1:63169]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:63169]
+WebSocket CONNECT /ws/chat
+/74ddd44f-20da-4003-a16a-3
+e3a7a4884bf/ 
+[127.0.0.1:63169]
+HTTP OPTIONS 
+/api/messages/send/ 200 
+[0.00, 127.0.0.1:50431]
+HTTP OPTIONS 
+/api/messages/send/ 200 
+[0.00, 127.0.0.1:50431]
+Internal Server Error: 
+/api/messages/send/
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+89, in _execute
+    return 
+self.cursor.execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\sqlite3\base.py",
+ line 328, in execute
+    return 
+super().execute(query, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: 
+NOT NULL constraint 
+failed: messaging_message.
+receiver_id
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\exception.py", 
+line 42, in inner
+    response = await 
+get_response(request)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\base.py", line 
+253, in 
+_get_response_async
+    response = await 
+wrapped_callback(
+               
+^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 506, in 
+__call__
+    ret = await 
+asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\concurrent\
+futures\thread.py", line 
+58, in run
+    result = 
+self.fn(*self.args, 
+**self.kwargs)
+             ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 561, in 
+thread_handler
+    return func(*args, 
+**kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\vie
+ws\decorators\csrf.py", 
+line 56, in wrapper_view
+    return 
+view_func(*args, **kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\viewsets.py", line 
+125, in view
+    return 
+self.dispatch(request, 
+*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 509, 
+in dispatch
+    response = 
+self.handle_exception(exc)
+               
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 469, 
+in handle_exception
+    self.raise_uncaught_ex
+ception(exc)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 480, 
+in 
+raise_uncaught_exception
+    raise exc
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 506, 
+in dispatch
+    response = 
+handler(request, *args, 
+**kwargs)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\views.py", line 26, in 
+send_message
+    message = serializer.s
+ave(sender=request.user, 
+status='sent')
+              ^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\serializers.py", 
+line 212, in save
+    self.instance = self.c
+reate(validated_data)
+                    ^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\serializers.py", 
+line 962, in create
+    instance = ModelClass.
+_default_manager.create(**
+validated_data)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+658, in create
+    obj.save(force_insert=
+True, using=self.db)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+814, in save
+    self.save_base(
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+877, in save_base
+    updated = 
+self._save_table(
+              
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+1020, in _save_table
+    results = 
+self._do_insert(
+              
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+1061, in _do_insert
+    return 
+manager._insert(
+           
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1805, in _insert
+    return query.get_compi
+ler(using=using).execute_s
+ql(returning_fields)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\compiler.py", 
+line 1822, in execute_sql
+    cursor.execute(sql, 
+params)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+102, in execute
+    return 
+super().execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+67, in execute
+    return self._execute_w
+ith_wrappers(
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+80, in 
+_execute_with_wrappers
+    return executor(sql, 
+params, many, context)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+84, in _execute
+    with self.db.wrap_data
+base_errors:
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+utils.py", line 91, in 
+__exit__
+    raise dj_exc_value.wit
+h_traceback(traceback) 
+from exc_value
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+89, in _execute
+    return 
+self.cursor.execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\sqlite3\base.py",
+ line 328, in execute
+    return 
+super().execute(query, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+django.db.utils.IntegrityE
+rror: NOT NULL constraint 
+failed: messaging_message.
+receiver_id
+Internal Server Error: 
+/api/messages/send/
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+89, in _execute
+    return 
+self.cursor.execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\sqlite3\base.py",
+ line 328, in execute
+    return 
+super().execute(query, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: 
+NOT NULL constraint 
+failed: messaging_message.
+receiver_id
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\exception.py", 
+line 42, in inner
+    response = await 
+get_response(request)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 557, in 
+thread_handler
+    raise exc_info[1]
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\cor
+e\handlers\base.py", line 
+253, in 
+_get_response_async
+    response = await 
+wrapped_callback(
+               
+^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 506, in 
+__call__
+    ret = await 
+asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\concurrent\
+futures\thread.py", line 
+58, in run
+    result = 
+self.fn(*self.args, 
+**self.kwargs)
+             ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\asgiref\sy
+nc.py", line 561, in 
+thread_handler
+    return func(*args, 
+**kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\vie
+ws\decorators\csrf.py", 
+line 56, in wrapper_view
+    return 
+view_func(*args, **kwargs)
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\viewsets.py", line 
+125, in view
+    return 
+self.dispatch(request, 
+*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 509, 
+in dispatch
+    response = 
+self.handle_exception(exc)
+               
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 469, 
+in handle_exception
+    self.raise_uncaught_ex
+ception(exc)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 480, 
+in 
+raise_uncaught_exception
+    raise exc
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\views.py", line 506, 
+in dispatch
+    response = 
+handler(request, *args, 
+**kwargs)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\views.py", line 26, in 
+send_message
+    message = serializer.s
+ave(sender=request.user, 
+status='sent')
+              ^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\serializers.py", 
+line 212, in save
+    self.instance = self.c
+reate(validated_data)
+                    ^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work\serializers.py", 
+line 962, in create
+    instance = ModelClass.
+_default_manager.create(**
+validated_data)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+658, in create
+    obj.save(force_insert=
+True, using=self.db)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+814, in save
+    self.save_base(
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+877, in save_base
+    updated = 
+self._save_table(
+              
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+1020, in _save_table
+    results = 
+self._do_insert(
+              
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\base.py", line 
+1061, in _do_insert
+    return 
+manager._insert(
+           
+^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\manager.py", line 
+87, in manager_method
+    return getattr(self.ge
+t_queryset(), 
+name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\query.py", line 
+1805, in _insert
+    return query.get_compi
+ler(using=using).execute_s
+ql(returning_fields)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+models\sql\compiler.py", 
+line 1822, in execute_sql
+    cursor.execute(sql, 
+params)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+102, in execute
+    return 
+super().execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+67, in execute
+    return self._execute_w
+ith_wrappers(
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+80, in 
+_execute_with_wrappers
+    return executor(sql, 
+params, many, context)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+84, in _execute
+    with self.db.wrap_data
+base_errors:
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+utils.py", line 91, in 
+__exit__
+    raise dj_exc_value.wit
+h_traceback(traceback) 
+from exc_value
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\utils.py", line 
+89, in _execute
+    return 
+self.cursor.execute(sql, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\db\
+backends\sqlite3\base.py",
+ line 328, in execute
+    return 
+super().execute(query, 
+params)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
+django.db.utils.IntegrityE
+rror: NOT NULL constraint 
+failed: messaging_message.
+receiver_id
+HTTP POST 
+/api/messages/send/ 500 
+[0.05, 127.0.0.1:50431]
+HTTP POST 
+/api/messages/send/ 500 
+[0.05, 127.0.0.1:50431]
+WebSocket HANDSHAKING /ws/
+chat/278e3d32-5821-49c7-9d
+d4-72b6d38ce5df/ 
+[127.0.0.1:61318]
+WebSocket HANDSHAKING /ws/
+chat/278e3d32-5821-49c7-9d
+d4-72b6d38ce5df/ 
+[127.0.0.1:61318]
+Exception inside 
+application: cannot 
+access local variable 
+'jwt' where it is not 
+associated with a value
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 313, in _load
+    header: dict[str, 
+Any] = 
+json.loads(header_data)
+                          
+   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\json\__init
+__.py", line 341, in loads
+    s = s.decode(detect_en
+coding(s), 
+'surrogatepass')
+        ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^
+UnicodeDecodeError: 
+'utf-8' codec can't 
+decode byte 0xa7 in 
+position 5: invalid start 
+byte
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\backends.py
+", line 139, in decode
+    return jwt.decode(
+           ^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+t.py", line 365, in decode
+    decoded = 
+self.decode_complete(
+              
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+t.py", line 262, in 
+decode_complete
+    decoded = 
+self._jws.decode_complete(
+              
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 240, in 
+decode_complete
+    payload, 
+signing_input, header, 
+signature = 
+self._load(jwt)
+                          
+                      
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 315, in _load
+    raise 
+DecodeError(f"Invalid 
+header string: {e}") from 
+e
+jwt.exceptions.DecodeError
+: Invalid header string: 
+'utf-8' codec can't 
+decode byte 0xa7 in 
+position 5: invalid start 
+byte
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\tokens.py",
+ line 58, in __init__
+    self.payload = token_b
+ackend.decode(token, 
+verify=verify)
+                   ^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\backends.py
+", line 154, in decode
+    raise TokenBackendErro
+r(_("Token is invalid or 
+expired")) from ex
+rest_framework_simplejwt.e
+xceptions.TokenBackendErro
+r: Token is invalid or 
+expired
+
+During handling of the 
+above exception, another 
+exception occurred:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\middleware.py", line 
+30, in __call__
+    UntypedToken(token)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\tokens.py",
+ line 60, in __init__
+    raise 
+TokenError(_("Token is 
+invalid or expired"))
+rest_framework_simplejwt.e
+xceptions.TokenError: 
+Token is invalid or 
+expired
+
+During handling of the 
+above exception, another 
+exception occurred:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\con
+trib\staticfiles\handlers.
+py", line 101, in __call__
+    return await 
+self.application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\r
+outing.py", line 48, in 
+__call__
+    return await 
+application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\s
+ecurity\websocket.py", 
+line 37, in __call__
+    return await 
+self.application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\middleware.py", line 
+36, in __call__
+    except (InvalidToken, 
+TokenError, 
+jwt.DecodeError) as e:
+                          
+            ^^^
+UnboundLocalError: cannot 
+access local variable 
+'jwt' where it is not 
+associated with a value
+WebSocket DISCONNECT /ws/c
+hat/278e3d32-5821-49c7-9dd
+4-72b6d38ce5df/ 
+[127.0.0.1:61318]
+WebSocket DISCONNECT /ws/c
+hat/278e3d32-5821-49c7-9dd
+4-72b6d38ce5df/ 
+[127.0.0.1:61318]
+WebSocket HANDSHAKING /ws/
+chat/278e3d32-5821-49c7-9d
+d4-72b6d38ce5df/ 
+[127.0.0.1:63626]
+WebSocket HANDSHAKING /ws/
+chat/278e3d32-5821-49c7-9d
+d4-72b6d38ce5df/ 
+[127.0.0.1:63626]
+Exception inside 
+application: cannot 
+access local variable 
+'jwt' where it is not 
+associated with a value
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 313, in _load
+    header: dict[str, 
+Any] = 
+json.loads(header_data)
+                          
+   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\App
+Data\Local\Programs\Python
+\Python311\Lib\json\__init
+__.py", line 341, in loads
+    s = s.decode(detect_en
+coding(s), 
+'surrogatepass')
+        ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^
+UnicodeDecodeError: 
+'utf-8' codec can't 
+decode byte 0xa7 in 
+position 5: invalid start 
+byte
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\backends.py
+", line 139, in decode
+    return jwt.decode(
+           ^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+t.py", line 365, in decode
+    decoded = 
+self.decode_complete(
+              
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+t.py", line 262, in 
+decode_complete
+    decoded = 
+self._jws.decode_complete(
+              
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 240, in 
+decode_complete
+    payload, 
+signing_input, header, 
+signature = 
+self._load(jwt)
+                          
+                      
+^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\jwt\api_jw
+s.py", line 315, in _load
+    raise 
+DecodeError(f"Invalid 
+header string: {e}") from 
+e
+jwt.exceptions.DecodeError
+: Invalid header string: 
+'utf-8' codec can't 
+decode byte 0xa7 in 
+position 5: invalid start 
+byte
+
+The above exception was 
+the direct cause of the 
+following exception:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\tokens.py",
+ line 58, in __init__
+    self.payload = token_b
+ackend.decode(token, 
+verify=verify)
+                   ^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\backends.py
+", line 154, in decode
+    raise TokenBackendErro
+r(_("Token is invalid or 
+expired")) from ex
+rest_framework_simplejwt.e
+xceptions.TokenBackendErro
+r: Token is invalid or 
+expired
+
+During handling of the 
+above exception, another 
+exception occurred:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\middleware.py", line 
+30, in __call__
+    UntypedToken(token)
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\rest_frame
+work_simplejwt\tokens.py",
+ line 60, in __init__
+    raise 
+TokenError(_("Token is 
+invalid or expired"))
+rest_framework_simplejwt.e
+xceptions.TokenError: 
+Token is invalid or 
+expired
+
+During handling of the 
+above exception, another 
+exception occurred:
+
+Traceback (most recent 
+call last):
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\django\con
+trib\staticfiles\handlers.
+py", line 101, in __call__
+    return await 
+self.application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\r
+outing.py", line 48, in 
+__call__
+    return await 
+application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\venv\Li
+b\site-packages\channels\s
+ecurity\websocket.py", 
+line 37, in __call__
+    return await 
+self.application(scope, 
+receive, send)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+  File "C:\Users\sivar\Des
+ktop\Projects-folder\Smart
+_chating\smart-sms\messagi
+ng\middleware.py", line 
+36, in __call__
+    except (InvalidToken, 
+TokenError, 
+jwt.DecodeError) as e:
+                          
+            ^^^
+UnboundLocalError: cannot 
+access local variable 
+'jwt' where it is not 
+associated with a value
+WebSocket DISCONNECT /ws/c
+hat/278e3d32-5821-49c7-9dd
+4-72b6d38ce5df/ 
+[127.0.0.1:63626]
+WebSocket DISCONNECT /ws/c
+hat/278e3d32-5821-49c7-9dd
+4-72b6d38ce5df/ 
+[127.0.0.1:63626]
