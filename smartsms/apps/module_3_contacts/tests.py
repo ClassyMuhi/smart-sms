@@ -8,6 +8,8 @@ from .models import Contact, EmergencyContact, normalize_phone
 import json
 
 User = CustomUser
+CONTACTS_BASE = '/api/contacts/contacts/'
+EMERGENCY_BASE = '/api/contacts/emergency-contacts/'
 
 def create_test_user(phone, email="test@example.com", password="TestPass123!", full_name="Test User"):
     """Helper function to create a test user for CustomUser."""
@@ -210,7 +212,7 @@ class ContactAPITests(APITestCase):
     
     def test_create_contact_api(self):
         """Test creating contact via API."""
-        response = self.client.post('/api/contacts/', {
+        response = self.client.post(CONTACTS_BASE, {
             'name': 'John Doe',
             'phone': '+91 98765 43210',
             'email': 'john@example.com'
@@ -234,7 +236,7 @@ class ContactAPITests(APITestCase):
             phone='9876543211'
         )
         
-        response = self.client.get('/api/contacts/')
+        response = self.client.get(CONTACTS_BASE)
         
         assert response.status_code == status.HTTP_200_OK
         assert response.data['count'] == 2
@@ -248,7 +250,7 @@ class ContactAPITests(APITestCase):
             phone='9876543210'
         )
         
-        response = self.client.get(f'/api/contacts/{contact.id}/')
+        response = self.client.get(f'{CONTACTS_BASE}{contact.id}/')
         
         assert response.status_code == status.HTTP_200_OK
         assert response.data['name'] == 'John Doe'
@@ -261,7 +263,7 @@ class ContactAPITests(APITestCase):
             phone='9876543210'
         )
         
-        response = self.client.patch(f'/api/contacts/{contact.id}/', {
+        response = self.client.patch(f'{CONTACTS_BASE}{contact.id}/', {
             'name': 'John Smith'
         })
         
@@ -279,7 +281,7 @@ class ContactAPITests(APITestCase):
             phone='9876543210'
         )
         
-        response = self.client.delete(f'/api/contacts/{contact.id}/')
+        response = self.client.delete(f'{CONTACTS_BASE}{contact.id}/')
         
         assert response.status_code == status.HTTP_204_NO_CONTENT
         assert Contact.objects.count() == 0
@@ -292,7 +294,7 @@ class ContactAPITests(APITestCase):
             phone='9876543210'
         )
         
-        response = self.client.post('/api/contacts/', {
+        response = self.client.post(CONTACTS_BASE, {
             'name': 'Another John',
             'phone': '+91 98765 43210'  # Will normalize to same
         })
@@ -305,7 +307,7 @@ class ContactAPITests(APITestCase):
         Contact.objects.create(user=self.user, name='John Doe', phone='9876543210')
         Contact.objects.create(user=self.user, name='Jane Smith', phone='9876543211')
         
-        response = self.client.get('/api/contacts/search/?name=john')
+        response = self.client.get(f'{CONTACTS_BASE}search/?name=john')
         
         assert response.status_code == status.HTTP_200_OK
         assert response.data['count'] == 1
@@ -316,7 +318,7 @@ class ContactAPITests(APITestCase):
         Contact.objects.create(user=self.user, name='John', phone='9876543210')
         Contact.objects.create(user=self.user, name='Jane', phone='9999999999')
         
-        response = self.client.get('/api/contacts/search/?phone=9876')
+        response = self.client.get(f'{CONTACTS_BASE}search/?phone=9876')
         
         assert response.status_code == status.HTTP_200_OK
         assert response.data['count'] == 1
@@ -324,7 +326,7 @@ class ContactAPITests(APITestCase):
     
     def test_search_without_params_fails(self):
         """Test search requires at least one parameter."""
-        response = self.client.get('/api/contacts/search/')
+        response = self.client.get(f'{CONTACTS_BASE}search/')
         
         assert response.status_code == status.HTTP_400_BAD_REQUEST
     
@@ -337,7 +339,7 @@ class ContactAPITests(APITestCase):
                 phone=f'987654321{i}'
             )
         
-        response = self.client.get('/api/contacts/recent/?limit=2')
+        response = self.client.get(f'{CONTACTS_BASE}recent/?limit=2')
         
         assert response.status_code == status.HTTP_200_OK
         assert response.data['count'] == 2
@@ -351,7 +353,7 @@ class ContactAPITests(APITestCase):
                 phone=f'987654313{i}'
             )
         
-        response = self.client.get('/api/contacts/?page=1&page_size=5')
+        response = self.client.get(f'{CONTACTS_BASE}?page=1&page_size=5')
         
         assert response.status_code == status.HTTP_200_OK
         assert response.data['count'] == 15
@@ -379,7 +381,7 @@ class EmergencyContactAPITests(APITestCase):
     
     def test_add_emergency_contact(self):
         """Test marking contact as emergency."""
-        response = self.client.post('/api/emergency-contacts/', {
+        response = self.client.post(EMERGENCY_BASE, {
             'contact': str(self.contact.id),
             'relationship': 'Mother'
         })
@@ -396,7 +398,7 @@ class EmergencyContactAPITests(APITestCase):
             relationship='Mother'
         )
         
-        response = self.client.get('/api/emergency-contacts/')
+        response = self.client.get(EMERGENCY_BASE)
         
         assert response.status_code == status.HTTP_200_OK
         assert response.data['count'] == 1
@@ -408,7 +410,7 @@ class EmergencyContactAPITests(APITestCase):
             contact=self.contact
         )
         
-        response = self.client.delete(f'/api/emergency-contacts/{emergency.id}/')
+        response = self.client.delete(f'{EMERGENCY_BASE}{emergency.id}/')
         
         assert response.status_code == status.HTTP_204_NO_CONTENT
         assert EmergencyContact.objects.count() == 0
@@ -421,7 +423,7 @@ class EmergencyContactAPITests(APITestCase):
             relationship='Mother'
         )
         
-        response = self.client.get('/api/emergency-contacts/quick_access/')
+        response = self.client.get(f'{EMERGENCY_BASE}quick_access/')
         
         assert response.status_code == status.HTTP_200_OK
         assert response.data['count'] == 1
@@ -430,7 +432,7 @@ class EmergencyContactAPITests(APITestCase):
     def test_add_by_phone(self):
         """Test adding emergency contact by phone."""
         response = self.client.post(
-            '/api/emergency-contacts/add_by_phone/',
+            f'{EMERGENCY_BASE}add_by_phone/',
             {'phone': '9876543210', 'relationship': 'Doctor'}
         )
         
@@ -443,7 +445,7 @@ class AuthenticationTests(APITestCase):
     
     def test_unauthenticated_access_denied(self):
         """Test unauthenticated users can't access API."""
-        response = self.client.get('/api/contacts/')
+        response = self.client.get(CONTACTS_BASE)
         
         assert response.status_code == status.HTTP_401_UNAUTHORIZED
     
@@ -461,7 +463,7 @@ class AuthenticationTests(APITestCase):
         # Authenticate as user2
         self.client.force_authenticate(user=user2)
         
-        response = self.client.get(f'/api/contacts/{contact.id}/')
+        response = self.client.get(f'{CONTACTS_BASE}{contact.id}/')
         
         # Should not be found
         assert response.status_code == status.HTTP_404_NOT_FOUND

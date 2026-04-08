@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart SMS - Mobile Chat UI</title>
+    <meta name="description" content="Premium Apple-style mobile chat frontend built with Tailwind and vanilla JavaScript." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            },
+            colors: {
+              appbg: '#0F0F10',
+              card: '#161618',
+              accent: '#2E7CF6',
+              msgrecv: '#262628',
+              textmain: '#F5F5F7',
+            },
+            boxShadow: {
+              glass: '0 0 0 1px rgba(255,255,255,0.08), 0 24px 60px rgba(0,0,0,0.45)',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" defer src="./js/app.js"></script>
+  </head>
+
+  <body class="bg-appbg text-textmain font-sans antialiased">
+    <div class="app-bg-orbs" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <main id="appRoot" class="relative min-h-screen">
+      <!-- Splash Screen -->
+      <section id="screen-splash" class="screen is-active min-h-screen">
+        <div class="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6">
+          <div class="animate-logo-fade rounded-[24px] border border-white/10 bg-card/80 px-8 py-7 shadow-glass backdrop-blur-2xl">
+            <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/90 shadow-[0_20px_45px_rgba(46,124,246,0.35)]">
+              <i data-lucide="message-circle-more" class="h-8 w-8 text-white"></i>
+            </div>
+            <h1 class="text-center text-2xl font-bold tracking-tight">Smart SMS</h1>
+            <p class="mt-2 text-center text-sm text-slate-300">Talk smarter.</p>
+            <div class="mt-5 flex items-center justify-center gap-1.5">
+              <span class="loading-dot"></span>
+              <span class="loading-dot" style="animation-delay: 0.18s"></span>
+              <span class="loading-dot" style="animation-delay: 0.36s"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Login Screen -->
+      <section id="screen-login" class="screen min-h-screen">
+        <div class="mx-auto flex min-h-screen max-w-md items-center px-6 py-10">
+          <div class="glass-card w-full rounded-[24px] p-6">
+            <div class="mb-6 text-center">
+              <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/90">
+                <i data-lucide="messages-square" class="h-7 w-7 text-white"></i>
+              </div>
+              <h2 class="text-2xl font-semibold tracking-tight">Welcome Back</h2>
+              <p class="mt-1 text-sm text-slate-400">Sign in to continue your conversations</p>
+            </div>
+
+            <form id="loginForm" class="space-y-4">
+              <label class="field-label">Email</label>
+              <input class="input-field" type="email" placeholder="you@example.com" required />
+              <label class="field-label">Password</label>
+              <input class="input-field" type="password" placeholder="Enter your password" required />
+
+              <button type="submit" class="primary-btn w-full">Sign In</button>
+              <button type="button" id="gotoSignupBtn" class="secondary-link w-full text-center">Create account</button>
+            </form>
+
+            <div class="mt-4 text-right">
+              <button type="button" class="secondary-link text-sm">Forgot password?</button>
+            </div>
+
+            <div class="my-5 flex items-center gap-3">
+              <div class="h-px flex-1 bg-white/10"></div>
+              <span class="text-xs uppercase tracking-[0.2em] text-slate-500">or</span>
+              <div class="h-px flex-1 bg-white/10"></div>
+            </div>
+
+            <div class="space-y-3">
+              <button type="button" class="social-btn"><i data-lucide="chrome" class="h-4 w-4"></i><span>Continue with Google</span></button>
+              <button type="button" class="social-btn"><i data-lucide="apple" class="h-4 w-4"></i><span>Continue with Apple</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Signup Screen -->
+      <section id="screen-signup" class="screen min-h-screen">
+        <div class="mx-auto flex min-h-screen max-w-md items-center px-6 py-10">
+          <div class="glass-card w-full rounded-[24px] p-6">
+            <div class="mb-6 text-center">
+              <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/90">
+                <i data-lucide="user-plus" class="h-7 w-7 text-white"></i>
+              </div>
+              <h2 class="text-2xl font-semibold tracking-tight">Create Account</h2>
+              <p class="mt-1 text-sm text-slate-400">Join and start chatting in seconds</p>
+            </div>
+
+            <form id="signupForm" class="space-y-4">
+              <label class="field-label">Name</label>
+              <input class="input-field" type="text" placeholder="Your full name" required />
+              <label class="field-label">Email</label>
+              <input class="input-field" type="email" placeholder="you@example.com" required />
+              <label class="field-label">Password</label>
+              <input id="signupPassword" class="input-field" type="password" placeholder="Create password" required />
+              <div class="h-2 overflow-hidden rounded-full bg-white/8">
+                <div id="passwordStrengthBar" class="h-full w-0 rounded-full bg-rose-400 transition-all duration-300"></div>
+              </div>
+              <p id="passwordStrengthText" class="text-xs text-slate-400">Password strength: low</p>
+
+              <label class="field-label">Confirm password</label>
+              <input class="input-field" type="password" placeholder="Confirm password" required />
+
+              <button type="submit" class="primary-btn w-full">Create Account</button>
+              <button type="button" id="gotoLoginBtn" class="secondary-link w-full text-center">Back to login</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- App Shell -->
+      <section id="screen-app" class="screen min-h-screen">
+        <div class="flex min-h-screen flex-col lg:flex-row">
+          <!-- Sidebar Nav -->
+          <aside id="appSidebar" class="sidebar-panel fixed inset-y-0 left-0 z-40 w-[84vw] max-w-[320px] -translate-x-full lg:static lg:translate-x-0">
+            <div class="flex h-full flex-col p-4">
+              <div class="flex items-center gap-3 rounded-[20px] border border-white/10 bg-white/5 p-3">
+                <img src="https://i.pravatar.cc/100?img=12" alt="User" class="h-11 w-11 rounded-2xl" />
+                <div class="min-w-0 flex-1">
+                  <p class="truncate text-sm font-semibold">Sivar</p>
+                  <p class="truncate text-xs text-slate-400">@sivar</p>
+                </div>
+                <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+              </div>
+
+              <nav class="mt-6 space-y-2">
+                <button class="nav-btn is-active" data-view="home"><i data-lucide="messages-square" class="h-4 w-4"></i><span>Home</span></button>
+                <button class="nav-btn" data-view="new-chat"><i data-lucide="plus-square" class="h-4 w-4"></i><span>New Chat</span></button>
+                <button class="nav-btn" data-view="profile"><i data-lucide="user-round" class="h-4 w-4"></i><span>Profile</span></button>
+                <button class="nav-btn" data-view="settings"><i data-lucide="settings" class="h-4 w-4"></i><span>Settings</span></button>
+              </nav>
+
+              <div class="mt-auto space-y-2">
+                <button id="logoutBtn" class="nav-btn text-rose-300"><i data-lucide="log-out" class="h-4 w-4"></i><span>Logout</span></button>
+              </div>
+            </div>
+          </aside>
+
+          <div id="sidebarBackdrop" class="fixed inset-0 z-30 hidden bg-black/55 backdrop-blur-sm lg:hidden"></div>
+
+          <div class="flex min-h-screen min-w-0 flex-1 flex-col">
+            <header class="flex items-center justify-between border-b border-white/10 bg-card/85 px-4 py-3 backdrop-blur-xl lg:px-6">
+              <div class="flex items-center gap-3">
+                <button id="sidebarToggle" class="icon-btn lg:hidden"><i data-lucide="menu" class="h-5 w-5"></i></button>
+                <div>
+                  <h3 id="viewTitle" class="text-base font-semibold">Conversations</h3>
+                  <p id="viewSubtitle" class="text-xs text-slate-400">Your messaging hub</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button class="icon-btn"><i data-lucide="search" class="h-4 w-4"></i></button>
+                <button class="icon-btn"><i data-lucide="bell" class="h-4 w-4"></i></button>
+              </div>
+            </header>
+
+            <div class="min-h-0 flex-1 overflow-hidden p-4 lg:p-6">
+              <!-- Home / conversation list + chat -->
+              <section id="view-home" class="view is-active h-full">
+                <div class="grid h-full gap-4 lg:grid-cols-[360px_minmax(0,1fr)]">
+                  <div class="glass-card flex h-full min-h-0 flex-col rounded-[24px] p-4">
+                    <div class="mb-4">
+                      <div class="search-shell">
+                        <i data-lucide="search" class="h-4 w-4 text-slate-400"></i>
+                        <input id="conversationSearch" class="w-full bg-transparent text-sm focus:outline-none" placeholder="Search chats" />
+                      </div>
+                    </div>
+                    <div id="conversationItems" class="custom-scrollbar flex-1 overflow-y-auto pr-1"></div>
+                  </div>
+
+                  <div class="glass-card relative flex h-full min-h-0 flex-col rounded-[24px] p-4">
+                    <div class="mb-3 flex items-center justify-between border-b border-white/10 pb-3">
+                      <div class="flex min-w-0 items-center gap-3">
+                        <img id="chatAvatar" src="https://i.pravatar.cc/100?img=5" class="h-10 w-10 rounded-2xl" alt="Active chat" />
+                        <div class="min-w-0">
+                          <p id="chatName" class="truncate text-sm font-semibold">Alex Morgan</p>
+                          <p id="chatStatus" class="truncate text-xs text-slate-400">Online now</p>
+                        </div>
+                      </div>
+                      <div class="hidden items-center gap-2 sm:flex">
+                        <button class="icon-btn"><i data-lucide="phone" class="h-4 w-4"></i></button>
+                        <button class="icon-btn"><i data-lucide="video" class="h-4 w-4"></i></button>
+                      </div>
+                    </div>
+
+                    <div id="chatTimeline" class="custom-scrollbar flex-1 overflow-y-auto pr-1"></div>
+
+                    <div class="mt-3 border-t border-white/10 pt-3">
+                      <form id="chatForm" class="chat-input-shell">
+                        <button type="button" class="icon-btn"><i data-lucide="paperclip" class="h-4 w-4"></i></button>
+                        <button type="button" class="icon-btn"><i data-lucide="smile" class="h-4 w-4"></i></button>
+                        <input id="chatInput" class="min-w-0 flex-1 bg-transparent text-sm focus:outline-none" placeholder="Type a message" />
+                        <button type="submit" class="primary-btn px-4 py-2">Send</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Profile -->
+              <section id="view-profile" class="view h-full">
+                <div class="glass-card mx-auto flex h-full max-w-xl flex-col rounded-[24px] p-6">
+                  <div class="text-center">
+                    <img src="https://i.pravatar.cc/160?img=12" alt="Profile" class="mx-auto h-24 w-24 rounded-[24px]" />
+                    <h3 class="mt-4 text-xl font-semibold">Sivar Kumar</h3>
+                    <p class="text-sm text-slate-400">@sivar</p>
+                    <p class="mt-2 text-sm text-slate-300">Building clean products, one chat at a time.</p>
+                  </div>
+
+                  <div class="mt-6 space-y-3">
+                    <button class="row-btn"><span>Edit Profile</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
+                    <button class="row-btn"><span>Notification Settings</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
+                    <button class="row-btn"><span>Theme Switch</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
+                    <button class="row-btn text-rose-300"><span>Logout</span><i data-lucide="log-out" class="h-4 w-4"></i></button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- New Chat -->
+              <section id="view-new-chat" class="view h-full">
+                <div class="glass-card mx-auto flex h-full max-w-2xl flex-col rounded-[24px] p-6">
+                  <h3 class="text-lg font-semibold">Start New Chat</h3>
+                  <div class="search-shell mt-4">
+                    <i data-lucide="search" class="h-4 w-4 text-slate-400"></i>
+                    <input id="newChatSearch" class="w-full bg-transparent text-sm focus:outline-none" placeholder="Search users" />
+                  </div>
+                  <div id="newChatList" class="custom-scrollbar mt-4 flex-1 overflow-y-auto pr-1"></div>
+                </div>
+              </section>
+
+              <!-- Settings -->
+              <section id="view-settings" class="view h-full">
+                <div class="glass-card mx-auto flex h-full max-w-2xl flex-col rounded-[24px] p-6">
+                  <h3 class="text-lg font-semibold">Settings</h3>
+                  <div class="mt-5 space-y-3">
+                    <button class="row-btn"><span>Appearance (Dark/Light)</span><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
+                    <button class="row-btn"><span>Notifications</span><i data-lucide="bell" class="h-4 w-4"></i></button>
+                    <button class="row-btn"><span>Privacy</span><i data-lucide="shield" class="h-4 w-4"></i></button>
+                    <button class="row-btn"><span>Storage</span><i data-lucide="database" class="h-4 w-4"></i></button>
+                    <button class="row-btn"><span>About</span><i data-lucide="info" class="h-4 w-4"></i></button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="reactionMenu" class="reaction-menu hidden">
+        <button class="reaction-pill" data-reaction="👍">👍</button>
+        <button class="reaction-pill" data-reaction="❤️">❤️</button>
+        <button class="reaction-pill" data-reaction="😂">😂</button>
+        <button class="reaction-pill" data-reaction="🔥">🔥</button>
+      </div>
+    </main>
+  </body>
+</html>

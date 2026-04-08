@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'apps.module_3_contacts',
 ]
 
+# Use the project's custom user model across auth and JWT lookups.
+AUTH_USER_MODEL = 'module_1_auth.CustomUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -154,7 +157,8 @@ SIMPLE_JWT = {
     'JSON_ENCODER': None,
     'JTI_CLAIM': 'jti',
     'TOKEN_TYPE_CLAIM': 'token_type',
-    'JTI_CLAIM': 'jti',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
     'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFECYCLE': timedelta(days=1),
