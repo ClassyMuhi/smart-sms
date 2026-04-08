@@ -58,7 +58,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name_plural': 'User Login Histories',
                 'ordering': ['-login_at'],
-                'indexes': [models.Index(fields=['user', '-login_at'], name='auth_module_user_id_e1182d_idx')],
+                'indexes': [models.Index(fields=['user', '-login_at'], name='module_1__auth_u_user_id_e1182d_idx')],
             },
         ),
         migrations.CreateModel(
@@ -77,19 +77,19 @@ class Migration(migrations.Migration):
             ],
             options={
                 'ordering': ['-created_at'],
-                'indexes': [models.Index(fields=['user', '-created_at'], name='auth_module_user_id_28bed5_idx'), models.Index(fields=['otp_code'], name='auth_module_otp_cod_112400_idx')],
+                'indexes': [models.Index(fields=['user', '-created_at'], name='module_1__auth_u_user_id_28bed5_idx'), models.Index(fields=['otp_code'], name='module_1__auth_u_otp_cod_112400_idx')],
             },
         ),
         migrations.AddIndex(
             model_name='customuser',
-            index=models.Index(fields=['phone'], name='auth_module_phone_6f0eb6_idx'),
+            index=models.Index(fields=['phone'], name='module_1__auth_u_phone_6f0eb6_idx'),
         ),
         migrations.AddIndex(
             model_name='customuser',
-            index=models.Index(fields=['email'], name='auth_module_email_7d2e8c_idx'),
+            index=models.Index(fields=['email'], name='module_1__auth_u_email_7d2e8c_idx'),
         ),
         migrations.AddIndex(
             model_name='customuser',
-            index=models.Index(fields=['-created_at'], name='auth_module_created_d94077_idx'),
+            index=models.Index(fields=['-created_at'], name='module_1__auth_u_created_d94077_idx'),
         ),
     ]

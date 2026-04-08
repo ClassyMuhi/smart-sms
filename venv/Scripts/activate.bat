@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\santh\smart sms\venv
+set VIRTUAL_ENV=C:\Users\sivar\Desktop\Projects-folder\Smart_SMS_V1\smart-sms\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
