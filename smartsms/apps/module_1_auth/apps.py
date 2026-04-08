@@ -8,4 +8,4 @@ class Module1AuthConfig(AppConfig):
     
     def ready(self):
         """Import signals when app is ready."""
-        import auth_module.signals
+        import apps.module_1_auth.signals

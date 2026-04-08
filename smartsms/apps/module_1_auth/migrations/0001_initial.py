@@ -53,12 +53,12 @@ class Migration(migrations.Migration):
                 ('ip_address', models.GenericIPAddressField(blank=True, null=True)),
                 ('user_agent', models.CharField(blank=True, max_length=500)),
                 ('login_at', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='login_history', to='auth_module.customuser')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='login_history', to='module_1_auth.customuser')),
             ],
             options={
                 'verbose_name_plural': 'User Login Histories',
                 'ordering': ['-login_at'],
-                'indexes': [models.Index(fields=['user', '-login_at'], name='auth_module_user_id_e1182d_idx')],
+                'indexes': [models.Index(fields=['user', '-login_at'], name='module_1__auth_u_user_id_e1182d_idx')],
             },
         ),
         migrations.CreateModel(
@@ -73,23 +73,23 @@ class Migration(migrations.Migration):
                 ('expires_at', models.DateTimeField()),
                 ('attempts', models.IntegerField(default=0)),
                 ('max_attempts', models.IntegerField(default=5)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='otp_verification', to='auth_module.customuser')),
+                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='otp_verification', to='module_1_auth.customuser')),
             ],
             options={
                 'ordering': ['-created_at'],
-                'indexes': [models.Index(fields=['user', '-created_at'], name='auth_module_user_id_28bed5_idx'), models.Index(fields=['otp_code'], name='auth_module_otp_cod_112400_idx')],
+                'indexes': [models.Index(fields=['user', '-created_at'], name='module_1__auth_u_user_id_28bed5_idx'), models.Index(fields=['otp_code'], name='module_1__auth_u_otp_cod_112400_idx')],
             },
         ),
         migrations.AddIndex(
             model_name='customuser',
-            index=models.Index(fields=['phone'], name='auth_module_phone_6f0eb6_idx'),
+            index=models.Index(fields=['phone'], name='module_1__auth_u_phone_6f0eb6_idx'),
         ),
         migrations.AddIndex(
             model_name='customuser',
-            index=models.Index(fields=['email'], name='auth_module_email_7d2e8c_idx'),
+            index=models.Index(fields=['email'], name='module_1__auth_u_email_7d2e8c_idx'),
         ),
         migrations.AddIndex(
             model_name='customuser',
-            index=models.Index(fields=['-created_at'], name='auth_module_created_d94077_idx'),
+            index=models.Index(fields=['-created_at'], name='module_1__auth_u_created_d94077_idx'),
         ),
     ]

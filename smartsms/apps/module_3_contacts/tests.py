@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
-from auth_module.models import CustomUser
+from apps.module_1_auth.models import CustomUser
 from .models import Contact, EmergencyContact, normalize_phone
 import json
 

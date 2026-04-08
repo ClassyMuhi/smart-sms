@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'corsheaders',
     
     # Local apps
-    'auth_module',
+    'apps.module_1_auth',
+    'apps.module_2_messaging',
+    'apps.module_3_contacts',
 ]
 
 MIDDLEWARE = [
@@ -170,6 +172,9 @@ CORS_ALLOWED_ORIGINS = [
 # OTP Configuration
 OTP_EXPIRY_MINUTES = 5  # OTP expires after 5 minutes
 OTP_LENGTH = 6  # 6-digit OTP
+
+# Custom User Model
+AUTH_USER_MODEL = 'module_1_auth.CustomUser'
 
 # Logging Configuration
 LOGGING = {
