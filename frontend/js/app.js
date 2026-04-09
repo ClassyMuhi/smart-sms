@@ -1,5 +1,5 @@
 import { conversationsSeed, messagesSeed, contactsSeed } from './data.js';
-import { loginUser, signupUser, sendMessage as sendMessageApi } from './api.js';
+import { loginUser, signupUser, sendMessage as sendMessageApi, getContacts } from './api.js';
 
 const state = {
   currentScreen: 'splash',
@@ -49,6 +49,11 @@ function cacheElements() {
 
   els.conversationSearch = document.getElementById('conversationSearch');
   els.conversationItems = document.getElementById('conversationItems');
+
+  els.addContactForm = document.getElementById('addContactForm');
+  els.contactName = document.getElementById('contactName');
+  els.contactPhone = document.getElementById('contactPhone');
+  els.contactEmail = document.getElementById('contactEmail');
 
   els.chatAvatar = document.getElementById('chatAvatar');
   els.chatName = document.getElementById('chatName');
@@ -269,9 +274,26 @@ async function onLoginSubmit(event) {
 
   const result = await loginUser(values);
   if (result.ok) {
+    // Fetch contacts after login
+    const contactsResult = await getContacts();
+    if (contactsResult.ok) {
+      state.contacts = contactsResult.contacts.map(c => ({
+        id: c.id,
+        name: c.name,
+        phone: c.phone,
+        email: c.email || '',
+        avatar: `https://i.pravatar.cc/100?u=${c.phone}`,
+        lastMessage: '',
+        time: 'now',
+      }));
+    }
+    
     setScreen('app');
     setView('home');
     renderHome();
+  } else {
+    alert('Login failed: ' + (result.error || 'Unknown error'));
+    console.error('Login error:', result.error);
   }
 }
 
@@ -280,11 +302,26 @@ async function onSignupSubmit(event) {
   const formData = new FormData(event.target);
   const values = Object.fromEntries(formData.entries());
 
+  console.log('Signup values:', values);
+
+  // Validate passwords match
+  if (values.password !== values.password_confirm) {
+    alert('Passwords do not match!');
+    console.error('Password mismatch');
+    return;
+  }
+
   const result = await signupUser(values);
+  console.log('Signup result:', result);
+  
   if (result.ok) {
+    alert('Account created! Please verify with OTP');
     setScreen('app');
     setView('home');
     renderHome();
+  } else {
+    alert('Sign up failed: ' + (result.error || 'Unknown error'));
+    console.error('Signup error:', result.error);
   }
 }
 
@@ -318,6 +355,50 @@ async function onChatSubmit(event) {
   renderHome();
 }
 
+async function onAddContactSubmit(event) {
+  event.preventDefault();
+  
+  const { createContact } = await import('./api.js');
+  
+  const name = (els.contactName.value || '').trim();
+  const phone = (els.contactPhone.value || '').trim();
+  const email = (els.contactEmail.value || '').trim();
+  
+  if (!name || !phone) {
+    alert('Name and phone are required');
+    return;
+  }
+  
+  const result = await createContact({ name, phone, email: email || null });
+  
+  if (result.ok) {
+    alert('Contact added successfully!');
+    
+    // Add to state
+    const newContact = {
+      id: result.contact.id,
+      name: result.contact.name,
+      phone: result.contact.phone,
+      email: result.contact.email || '',
+      avatar: `https://i.pravatar.cc/100?u=${result.contact.phone}`,
+      lastMessage: '',
+      time: 'now',
+    };
+    
+    state.contacts.push(newContact);
+    
+    // Clear form and refresh list
+    els.contactName.value = '';
+    els.contactPhone.value = '';
+    els.contactEmail.value = '';
+    
+    renderNewChatList();
+  } else {
+    alert('Failed to add contact: ' + (result.error || 'Unknown error'));
+    console.error('Add contact error:', result.error);
+  }
+}
+
 function evaluatePasswordStrength(value) {
   let score = 0;
   if (value.length >= 8) score += 1;
@@ -342,8 +423,12 @@ function evaluatePasswordStrength(value) {
 }
 
 function refreshIcons() {
-  if (window.lucide) {
-    window.lucide.createIcons();
+  try {
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  } catch (err) {
+    console.warn('⚠️ Icon refresh failed:', err.message);
   }
 }
 
@@ -360,9 +445,18 @@ function escapeHtml(value) {
 }
 
 function bindEvents() {
+  // Transition from splash to login after 2.3 seconds
   window.setTimeout(() => {
-    setScreen('login');
-    refreshIcons();
+    try {
+      console.log('🔄 Transitioning from splash to login...');
+      setScreen('login');
+      refreshIcons();
+      console.log('✅ Transitioned to login');
+    } catch (err) {
+      console.error('❌ Error during transition:', err);
+      // Force login screen even if there's an error
+      setScreen('login');
+    }
   }, 2300);
 
   els.gotoSignupBtn.addEventListener('click', () => setScreen('signup'));
@@ -370,6 +464,7 @@ function bindEvents() {
 
   els.loginForm.addEventListener('submit', onLoginSubmit);
   els.signupForm.addEventListener('submit', onSignupSubmit);
+  els.addContactForm.addEventListener('submit', onAddContactSubmit);
   els.chatForm.addEventListener('submit', onChatSubmit);
 
   els.signupPassword.addEventListener('input', (event) => {
@@ -433,14 +528,40 @@ function bindEvents() {
 }
 
 function init() {
-  cacheElements();
-  bindEvents();
-  setScreen('splash');
-  setView('home');
-  renderHome();
-  renderNewChatList();
-  evaluatePasswordStrength('');
-  refreshIcons();
+  try {
+    console.log('🚀 Initializing app...');
+    cacheElements();
+    console.log('✅ Elements cached');
+    
+    bindEvents();
+    console.log('✅ Events bound');
+    
+    setScreen('splash');
+    console.log('✅ Splash screen shown');
+    
+    setView('home');
+    console.log('✅ Home view set');
+    
+    // Don't render content on splash screen - wait until login
+    renderHome();
+    renderNewChatList();
+    evaluatePasswordStrength('');
+    
+    setTimeout(() => {
+      try {
+        refreshIcons();
+        console.log('✅ Icons refreshed');
+      } catch (err) {
+        console.warn('⚠️ Icon refresh failed:', err.message);
+      }
+    }, 100);
+    
+    console.log('✅ App initialized successfully');
+  } catch (err) {
+    console.error('❌ Initialization error:', err);
+    // Force show login screen even if there's an error
+    setScreen('login');
+  }
 }
 
 window.addEventListener('DOMContentLoaded', init);
