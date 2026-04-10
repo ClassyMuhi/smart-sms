@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
+from django.db.models import Q
 from .models import SMSMessage, DeliveryStatus, MessageTemplate
 from .serializers import SMSMessageSerializer, DeliveryStatusSerializer, MessageTemplateSerializer
 
@@ -27,7 +28,23 @@ class SMSMessageViewSet(viewsets.ModelViewSet):
     
     def create(self, request, *args, **kwargs):
         """Send a new SMS message"""
-        serializer = self.get_serializer(data=request.data)
+        payload = request.data.copy()
+        recipient = payload.get('recipient') or payload.get('recipient_phone')
+        message = payload.get('message') or payload.get('message_body')
+
+        if not recipient or not message:
+            return Response(
+                {'detail': 'recipient/message or recipient_phone/message_body are required.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        payload['sender'] = request.user.phone
+        payload['recipient'] = recipient
+        payload['message'] = message
+        payload['message_type'] = 'outbound'
+        payload['status'] = 'pending'
+
+        serializer = self.get_serializer(data=payload)
         serializer.is_valid(raise_exception=True)
         
         # Create message
@@ -42,6 +59,28 @@ class SMSMessageViewSet(viewsets.ModelViewSet):
         
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    @action(detail=False, methods=['get'])
+    def thread(self, request):
+        """Get message history between the current user and a contact phone."""
+        contact_phone = request.query_params.get('contact_phone') or request.query_params.get('recipient_phone')
+        if not contact_phone:
+            return Response(
+                {'detail': 'contact_phone is required.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        queryset = SMSMessage.objects.filter(
+            Q(sender=request.user.phone, recipient=contact_phone) |
+            Q(sender=contact_phone, recipient=request.user.phone)
+        ).order_by('created_at')
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'contact_phone': contact_phone,
+            'count': queryset.count(),
+            'results': serializer.data,
+        })
     
     @action(detail=True, methods=['get'])
     def delivery_status(self, request, pk=None):
