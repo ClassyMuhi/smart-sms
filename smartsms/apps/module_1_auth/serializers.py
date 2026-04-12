@@ -3,6 +3,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import authenticate
 from django.utils import timezone
 from datetime import timedelta
+import random
 import re
 
 from .models import CustomUser, OTPVerification, UserLoginHistory
@@ -62,7 +63,11 @@ class RegisterSerializer(serializers.ModelSerializer):
         write_only=True,
         required=True,
     )
-    phone = serializers.CharField(validators=[PhoneNumberValidator()])
+    phone = serializers.CharField(
+        validators=[PhoneNumberValidator()],
+        required=False,
+        allow_blank=True,
+    )
     
     class Meta:
         model = CustomUser
@@ -70,6 +75,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'full_name': {'required': True},
             'email': {'required': True},
+            'phone': {'required': False},
         }
     
     def validate_email(self, value):
@@ -80,9 +86,19 @@ class RegisterSerializer(serializers.ModelSerializer):
     
     def validate_phone(self, value):
         """Check if phone already exists."""
+        if not value:
+            return value
         if CustomUser.objects.filter(phone=value).exists():
             raise serializers.ValidationError("Phone number already registered.")
         return value
+
+    def _generate_unique_phone(self):
+        """Generate a pseudo phone for accounts that sign up with email only."""
+        for _ in range(20):
+            candidate = f"9{random.randint(100000000, 999999999)}"
+            if not CustomUser.objects.filter(phone=candidate).exists():
+                return candidate
+        raise serializers.ValidationError("Unable to generate phone number. Please provide phone manually.")
     
     def validate(self, attrs):
         """Validate that passwords match."""
@@ -96,6 +112,9 @@ class RegisterSerializer(serializers.ModelSerializer):
         """Create user and hash password."""
         validated_data.pop('password_confirm')
         password = validated_data.pop('password')
+
+        if not validated_data.get('phone'):
+            validated_data['phone'] = self._generate_unique_phone()
         
         user = CustomUser.objects.create(**validated_data)
         user.set_password(password)

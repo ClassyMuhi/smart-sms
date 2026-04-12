@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'apps.module_1_auth',
     'apps.module_2_messaging',
     'apps.module_3_contacts',
+    'apps.module_4_emergency',
 ]
 
 # Use the project's custom user model across auth and JWT lookups.

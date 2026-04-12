@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
+from django.db.models import Q
 from .models import SMSMessage, DeliveryStatus, MessageTemplate
 from .serializers import SMSMessageSerializer, DeliveryStatusSerializer, MessageTemplateSerializer
 
@@ -19,11 +20,18 @@ class SMSMessageViewSet(viewsets.ModelViewSet):
     queryset = SMSMessage.objects.all()
     serializer_class = SMSMessageSerializer
     permission_classes = [IsAuthenticated]
+
+    def _user_identifier(self, user):
+        """Use email-first identifier so users can chat by contact email."""
+        return (user.email or user.phone or '').strip()
     
     def get_queryset(self):
         """Filter messages by current user"""
         user = self.request.user
-        return SMSMessage.objects.filter(sender=user.phone)
+        identifier = self._user_identifier(user)
+        return SMSMessage.objects.filter(
+            Q(sender=identifier) | Q(recipient=identifier)
+        )
     
     def create(self, request, *args, **kwargs):
         """Send a new SMS message"""
@@ -32,7 +40,7 @@ class SMSMessageViewSet(viewsets.ModelViewSet):
         
         # Create message
         message = serializer.save(
-            sender=request.user.phone,
+            sender=self._user_identifier(request.user),
             message_type='outbound',
             status='pending'
         )

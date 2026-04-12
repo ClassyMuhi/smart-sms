@@ -42,6 +42,7 @@ export async function loginUser(payload) {
       return {
         ok: true,
         user: {
+          id: data.user.id,
           name: data.user.full_name || data.user.phone,
           phone: data.user.phone,
           email: data.user.email,
@@ -83,7 +84,7 @@ export async function signupUser(payload) {
       console.log('✅ Signup successful');
       return {
         ok: true,
-        user: { name: payload.name, phone: payload.phone },
+        user: { id: data.user_id, name: payload.name, phone: payload.phone, email: payload.email },
         user_id: data.user_id,
       };
     } else {
@@ -119,15 +120,15 @@ export async function sendMessage(payload) {
     }
 
     console.log('🔄 Sending message...');
-    const response = await fetchWithTimeout(`${API_BASE_URL}/messaging/send/`, {
+    const response = await fetchWithTimeout(`${API_BASE_URL}/messaging/messages/`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${authToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        recipient_phone: payload.to,
-        message_body: payload.text,
+        recipient: payload.to,
+        message: payload.text,
       }),
     });
 
@@ -138,12 +139,49 @@ export async function sendMessage(payload) {
     } else {
       const error = await response.json();
       console.error('❌ Send message error:', error);
-      return { ok: false, error: error.detail || 'Message send failed' };
+      return { ok: false, error: error.detail || error.error || 'Message send failed' };
     }
   } catch (err) {
     console.error('❌ Send message exception:', err.message);
     return { ok: false, error: err.message };
   }
+}
+
+/**
+ * Get message history for the logged-in user
+ */
+export async function getMessages() {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/messaging/messages/`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return { ok: true, messages: data.results || data || [] };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || 'Failed to fetch messages' };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Clear auth token from memory and localStorage
+ */
+export function clearAuthToken() {
+  authToken = null;
+  localStorage.removeItem('authToken');
 }
 
 /**
@@ -223,6 +261,270 @@ export async function createContact(payload) {
     }
   } catch (err) {
     console.error('❌ CreateContact exception:', err.message);
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Get emergency contacts linked to current user.
+ */
+export async function getEmergencyContacts() {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/contacts/emergency-contacts/`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return { ok: true, contacts: data.results || data || [] };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || 'Failed to fetch emergency contacts' };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Add a contact as emergency contact.
+ */
+export async function addEmergencyContact(payload) {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/contacts/emergency-contacts/`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contact: payload.contact,
+        relationship: payload.relationship || '',
+      }),
+    });
+
+    if (response.ok) {
+      return { ok: true, data: await response.json() };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || JSON.stringify(error) };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Remove emergency contact by emergency-contact ID.
+ */
+export async function removeEmergencyContact(emergencyContactId) {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/contacts/emergency-contacts/${emergencyContactId}/`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok || response.status === 204) {
+      return { ok: true };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || 'Failed to remove emergency contact' };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Trigger emergency SOS.
+ */
+export async function triggerSOS(payload) {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/emergency/sos/`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      return { ok: true, data: await response.json() };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || JSON.stringify(error) };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Smart SOS trigger endpoint requiring only authenticated user
+ * (optional user_id, latitude, longitude).
+ */
+export async function triggerEmergency(payload = {}) {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/emergency/trigger/`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      return { ok: true, data: await response.json() };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || JSON.stringify(error) };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * List SOS history for current user.
+ */
+export async function getSOSList() {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/emergency/sos/`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return { ok: true, sos: data.results || data || [] };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || 'Failed to fetch SOS list' };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Get active SOS entries.
+ */
+export async function getActiveSOS() {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/emergency/sos/active/`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return { ok: true, active: data.active_emergencies || [] };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || 'Failed to fetch active SOS' };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Add live location update to a specific SOS.
+ */
+export async function addSOSLocation(sosId, payload) {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/emergency/sos/${sosId}/add_location/`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      return { ok: true, data: await response.json() };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || JSON.stringify(error) };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+/**
+ * Resolve or cancel an SOS.
+ */
+export async function updateSOSStatus(sosId, statusValue) {
+  try {
+    if (!authToken) {
+      return { ok: false, error: 'Not authenticated' };
+    }
+
+    const response = await fetchWithTimeout(`${API_BASE_URL}/emergency/sos/${sosId}/`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ status: statusValue }),
+    });
+
+    if (response.ok) {
+      return { ok: true, data: await response.json() };
+    }
+
+    const error = await response.json();
+    return { ok: false, error: error.detail || error.error || JSON.stringify(error) };
+  } catch (err) {
     return { ok: false, error: err.message };
   }
 }

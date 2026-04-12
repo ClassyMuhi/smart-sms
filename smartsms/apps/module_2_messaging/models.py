@@ -22,8 +22,8 @@ class SMSMessage(models.Model):
     ]
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    sender = models.CharField(max_length=15)  # Phone or user ID
-    recipient = models.CharField(max_length=15)  # Phone number
+    sender = models.CharField(max_length=255)  # Phone or email
+    recipient = models.CharField(max_length=255)  # Phone or email
     message = models.TextField()
     message_type = models.CharField(max_length=20, choices=MESSAGE_TYPE_CHOICES)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')

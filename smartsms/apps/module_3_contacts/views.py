@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from django.db.models import Q
-from .models import Contact, EmergencyContact
+from .models import Contact, EmergencyContact, normalize_phone
 from .serializers import (
     ContactSerializer,
     EmergencyContactSerializer,
@@ -312,10 +312,12 @@ class EmergencyContactViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
         
+        normalized_phone = normalize_phone(phone)
+
         try:
             contact = Contact.objects.get(
                 user=request.user,
-                phone=phone
+                phone=normalized_phone
             )
         except Contact.DoesNotExist:
             return Response(

@@ -25,6 +25,7 @@ class AuthViewSet(viewsets.GenericViewSet):
     """
     
     queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
     permission_classes = [AllowAny]
     
     @action(detail=False, methods=['post'], permission_classes=[AllowAny])

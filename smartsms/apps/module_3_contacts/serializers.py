@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.db import IntegrityError
+import random
 from .models import Contact, EmergencyContact, normalize_phone, validate_phone
 
 
@@ -16,8 +17,10 @@ class ContactSerializer(serializers.ModelSerializer):
     
     # Phone field with custom validation
     phone = serializers.CharField(
-        write_only=True,  # Only accept on input, don't return
-        help_text="Phone number (will be normalized)"
+        required=False,
+        allow_blank=True,
+        allow_null=True,
+        help_text="Phone number (optional when email is provided)"
     )
     
     # Display normalized phone on response
@@ -53,7 +56,7 @@ class ContactSerializer(serializers.ModelSerializer):
         - Ensure proper format
         """
         if not value:
-            raise serializers.ValidationError("Phone number is required.")
+            return value
         
         # Validate format
         try:
@@ -81,6 +84,30 @@ class ContactSerializer(serializers.ModelSerializer):
             )
         
         return normalized
+
+    def validate(self, attrs):
+        """Require at least one contact channel (phone or email)."""
+        phone = attrs.get('phone')
+        email = attrs.get('email')
+
+        if self.instance is not None:
+            phone = phone if phone is not None else self.instance.phone
+            email = email if email is not None else self.instance.email
+
+        if not phone and not email:
+            raise serializers.ValidationError(
+                {"non_field_errors": ["Provide at least phone or email."]}
+            )
+
+        return attrs
+
+    def _generate_contact_phone(self, user):
+        """Generate fallback phone for email-only contacts."""
+        for _ in range(20):
+            candidate = f"8{random.randint(100000000, 999999999)}"
+            if not Contact.objects.filter(user=user, phone=candidate).exists():
+                return candidate
+        raise serializers.ValidationError("Unable to generate fallback phone. Please provide a phone.")
     
     def validate_name(self, value):
         """Validate name field."""
@@ -101,6 +128,9 @@ class ContactSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         """Create contact (user set by viewset.perform_create)."""
+        if not validated_data.get('phone'):
+            user = self.context['request'].user
+            validated_data['phone'] = self._generate_contact_phone(user)
         return super().create(validated_data)
 
 

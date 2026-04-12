@@ -22,7 +22,11 @@ class SMSMessageSerializer(serializers.ModelSerializer):
             'status', 'created_at', 'updated_at', 'sent_at',
             'characters_count', 'segments_count', 'delivery_status'
         ]
-        read_only_fields = ['id', 'created_at', 'updated_at', 'sent_at']
+        read_only_fields = [
+            'id', 'sender', 'message_type', 'status',
+            'created_at', 'updated_at', 'sent_at',
+            'characters_count', 'segments_count'
+        ]
 
 
 class MessageTemplateSerializer(serializers.ModelSerializer):

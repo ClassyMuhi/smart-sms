@@ -80,8 +80,8 @@
             </div>
 
             <form id="loginForm" class="space-y-4">
-              <label class="field-label">Email or Phone</label>
-              <input class="input-field" type="text" name="email" placeholder="you@example.com or +91 98765 43210" required />
+              <label class="field-label">Email</label>
+              <input class="input-field" type="email" name="email" placeholder="you@example.com" required />
               <label class="field-label">Password</label>
               <input class="input-field" type="password" name="password" placeholder="Enter your password" required />
 
@@ -123,9 +123,6 @@
               <label class="field-label">Name</label>
               <input class="input-field" type="text" name="name" placeholder="Your full name" required />
               
-              <label class="field-label">Phone</label>
-              <input class="input-field" type="tel" name="phone" placeholder="+91 98765 43210" required />
-              
               <label class="field-label">Email</label>
               <input class="input-field" type="email" name="email" placeholder="you@example.com" required />
               
@@ -153,10 +150,10 @@
           <aside id="appSidebar" class="sidebar-panel fixed inset-y-0 left-0 z-40 w-[84vw] max-w-[320px] -translate-x-full lg:static lg:translate-x-0">
             <div class="flex h-full flex-col p-4">
               <div class="flex items-center gap-3 rounded-[20px] border border-white/10 bg-white/5 p-3">
-                <img src="https://i.pravatar.cc/100?img=12" alt="User" class="h-11 w-11 rounded-2xl" />
+                <img id="sidebarUserAvatar" src="https://i.pravatar.cc/100?img=12" alt="User" class="h-11 w-11 rounded-2xl" />
                 <div class="min-w-0 flex-1">
-                  <p class="truncate text-sm font-semibold">Sivar</p>
-                  <p class="truncate text-xs text-slate-400">@sivar</p>
+                  <p id="sidebarUserName" class="truncate text-sm font-semibold">Guest User</p>
+                  <p id="sidebarUserHandle" class="truncate text-xs text-slate-400">@guest</p>
                 </div>
                 <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
               </div>
@@ -186,8 +183,8 @@
                 </div>
               </div>
               <div class="flex items-center gap-2">
-                <button class="icon-btn"><i data-lucide="search" class="h-4 w-4"></i></button>
-                <button class="icon-btn"><i data-lucide="bell" class="h-4 w-4"></i></button>
+                <button id="headerSearchBtn" class="icon-btn"><i data-lucide="search" class="h-4 w-4"></i></button>
+                <button id="headerNotificationBtn" class="icon-btn"><i data-lucide="bell" class="h-4 w-4"></i></button>
               </div>
             </header>
 
@@ -238,17 +235,17 @@
               <section id="view-profile" class="view h-full">
                 <div class="glass-card mx-auto flex h-full max-w-xl flex-col rounded-[24px] p-6">
                   <div class="text-center">
-                    <img src="https://i.pravatar.cc/160?img=12" alt="Profile" class="mx-auto h-24 w-24 rounded-[24px]" />
-                    <h3 class="mt-4 text-xl font-semibold">Sivar Kumar</h3>
-                    <p class="text-sm text-slate-400">@sivar</p>
-                    <p class="mt-2 text-sm text-slate-300">Building clean products, one chat at a time.</p>
+                    <img id="profileAvatar" src="https://i.pravatar.cc/160?img=12" alt="Profile" class="mx-auto h-24 w-24 rounded-[24px]" />
+                    <h3 id="profileName" class="mt-4 text-xl font-semibold">Guest User</h3>
+                    <p id="profileHandle" class="text-sm text-slate-400">@guest</p>
+                    <p id="profileStatus" class="mt-2 text-sm text-slate-300">Your status will appear here.</p>
                   </div>
 
                   <div class="mt-6 space-y-3">
-                    <button class="row-btn"><span>Edit Profile</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
-                    <button class="row-btn"><span>Notification Settings</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
-                    <button class="row-btn"><span>Theme Switch</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
-                    <button class="row-btn text-rose-300"><span>Logout</span><i data-lucide="log-out" class="h-4 w-4"></i></button>
+                    <button id="profileEditBtn" class="row-btn"><span>Edit Profile</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
+                    <button id="profileNotificationBtn" class="row-btn"><span>Notification Settings</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
+                    <button id="profileThemeBtn" class="row-btn"><span>Theme Switch</span><i data-lucide="chevron-right" class="h-4 w-4"></i></button>
+                    <button id="profileLogoutBtn" class="row-btn text-rose-300"><span>Logout</span><i data-lucide="log-out" class="h-4 w-4"></i></button>
                   </div>
                 </div>
               </section>
@@ -261,8 +258,7 @@
                   <!-- Add Contact Form -->
                   <form id="addContactForm" class="space-y-3 mb-6 pb-4 border-b border-white/10">
                     <input id="contactName" class="input-field" type="text" placeholder="Contact name" required />
-                    <input id="contactPhone" class="input-field" type="tel" placeholder="Phone (10 digits)" required />
-                    <input id="contactEmail" class="input-field" type="email" placeholder="Email (optional)" />
+                    <input id="contactEmail" class="input-field" type="email" placeholder="Contact email" required />
                     <button type="submit" class="primary-btn w-full text-sm">Add Contact</button>
                   </form>
 
@@ -277,15 +273,111 @@
               </section>
 
               <!-- Settings -->
-              <section id="view-settings" class="view h-full">
-                <div class="glass-card mx-auto flex h-full max-w-2xl flex-col rounded-[24px] p-6">
-                  <h3 class="text-lg font-semibold">Settings</h3>
-                  <div class="mt-5 space-y-3">
-                    <button class="row-btn"><span>Appearance (Dark/Light)</span><i data-lucide="sun-moon" class="h-4 w-4"></i></button>
-                    <button class="row-btn"><span>Notifications</span><i data-lucide="bell" class="h-4 w-4"></i></button>
-                    <button class="row-btn"><span>Privacy</span><i data-lucide="shield" class="h-4 w-4"></i></button>
-                    <button class="row-btn"><span>Storage</span><i data-lucide="database" class="h-4 w-4"></i></button>
-                    <button class="row-btn"><span>About</span><i data-lucide="info" class="h-4 w-4"></i></button>
+              <section id="view-settings" class="view h-full overflow-y-auto">
+                <div class="glass-card mx-auto w-full max-w-2xl rounded-[24px] p-6">
+                  <h3 class="text-lg font-semibold mb-6">Settings</h3>
+
+                  <!-- Appearance Toggle -->
+                  <div class="flex items-center justify-between p-4 mb-4 border border-white/10 rounded-lg bg-white/3">
+                    <div class="flex items-center gap-3">
+                      <i data-lucide="sun-moon" class="h-5 w-5"></i>
+                      <div>
+                        <p class="text-sm font-medium">Appearance</p>
+                        <p class="text-xs text-slate-400">Dark mode</p>
+                      </div>
+                    </div>
+                    <label class="toggle-switch">
+                      <input id="appearanceToggle" type="checkbox" checked />
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+
+                  <!-- Notifications Toggle -->
+                  <div class="flex items-center justify-between p-4 mb-4 border border-white/10 rounded-lg bg-white/3">
+                    <div class="flex items-center gap-3">
+                      <i data-lucide="bell" class="h-5 w-5"></i>
+                      <div>
+                        <p class="text-sm font-medium">Notifications</p>
+                        <p id="notificationStatus" class="text-xs text-slate-400">On</p>
+                      </div>
+                    </div>
+                    <label class="toggle-switch">
+                      <input id="notificationsToggle" type="checkbox" checked />
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+
+                  <!-- Privacy Toggle -->
+                  <div class="flex items-center justify-between p-4 mb-4 border border-white/10 rounded-lg bg-white/3">
+                    <div class="flex items-center gap-3">
+                      <i data-lucide="shield" class="h-5 w-5"></i>
+                      <div>
+                        <p class="text-sm font-medium">Privacy</p>
+                        <p id="privacyStatus" class="text-xs text-slate-400">Contacts only</p>
+                      </div>
+                    </div>
+                    <label class="toggle-switch">
+                      <input id="privacyToggle" type="checkbox" />
+                      <span class="toggle-slider"></span>
+                    </label>
+                  </div>
+
+                  <!-- Storage Button -->
+                  <button id="settingsStorageBtn" class="w-full flex items-center justify-between p-4 mb-4 border border-white/10 rounded-lg bg-white/3 hover:bg-white/5 transition">
+                    <div class="flex items-center gap-3">
+                      <i data-lucide="database" class="h-5 w-5"></i>
+                      <div class="text-left">
+                        <p class="text-sm font-medium">Storage</p>
+                        <p class="text-xs text-slate-400">Clear chat cache</p>
+                      </div>
+                    </div>
+                    <i data-lucide="chevron-right" class="h-4 w-4"></i>
+                  </button>
+
+                  <!-- About Section -->
+                  <div class="p-4 border border-white/10 rounded-lg bg-white/3">
+                    <div class="flex items-center gap-3 mb-2">
+                      <i data-lucide="info" class="h-5 w-5"></i>
+                      <p class="text-sm font-medium">About</p>
+                    </div>
+                    <p class="text-xs text-slate-400">Smart SMS Web v1.0</p>
+                    <p class="text-xs text-slate-500 mt-1">Realtime chat frontend connected to your Django API</p>
+                  </div>
+
+                  <!-- Emergency & Safety Testing Panel -->
+                  <div class="mt-6 p-4 border border-rose-400/30 rounded-lg bg-rose-500/5">
+                    <div class="flex items-center gap-2 mb-3">
+                      <i data-lucide="siren" class="h-5 w-5 text-rose-300"></i>
+                      <p class="text-sm font-semibold text-rose-200">Emergency Help</p>
+                    </div>
+
+                    <p id="emergencyStatusText" class="text-xs text-slate-300 mb-3">Press and hold for Emergency Help (2.5 seconds)</p>
+
+                    <form id="addEmergencyContactForm" class="space-y-2 mb-4 pb-4 border-b border-white/10">
+                      <p class="text-xs text-slate-400">Emergency Contacts</p>
+                      <select id="emergencyContactSelect" class="input-field text-sm" required>
+                        <option value="">Select contact</option>
+                      </select>
+                      <input id="emergencyRelationship" class="input-field text-sm" placeholder="Relationship (e.g., Mother, Doctor)" />
+                      <button type="submit" class="primary-btn w-full text-sm">Add As Emergency Contact</button>
+                    </form>
+
+                    <div id="emergencyContactsList" class="space-y-2 mb-4"></div>
+
+                    <button id="smartSosButton" type="button" class="w-full rounded-2xl bg-rose-600 text-white font-semibold py-5 text-lg shadow-[0_18px_35px_rgba(225,29,72,0.35)] active:scale-[0.99] transition">
+                      HOLD FOR EMERGENCY HELP
+                    </button>
+
+                    <div id="sosHoldProgressWrap" class="mt-3 h-2 w-full rounded-full bg-white/10 overflow-hidden hidden">
+                      <div id="sosHoldProgressBar" class="h-full w-0 bg-rose-400 transition-all"></div>
+                    </div>
+
+                    <div id="sosCountdownWrap" class="mt-4 hidden rounded-xl border border-amber-300/30 bg-amber-500/10 p-3">
+                      <p id="sosCountdownText" class="text-sm text-amber-200">Sending in 3...</p>
+                      <button id="sosCancelBtn" type="button" class="secondary-link text-sm mt-1">Cancel</button>
+                    </div>
+
+                    <p class="text-[11px] text-slate-500 mt-4">After SOS: location is sent automatically and live updates continue every 30 seconds.</p>
                   </div>
                 </div>
               </section>
